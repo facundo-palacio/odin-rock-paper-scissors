@@ -25,18 +25,28 @@ one option for it if the input is invalid. And restricted its options to
 numbers. This will be reviewed and reformatted later.*/
 
 function getHumanChoice() {
-    let wrongInput = true;
-
-    const choice = ["rock", "paper", "scissors"];
-    
- 	let humanChoice = prompt("Choose a number: 1 - rock, 2 - paper, 3 - scissors");
- 	if (humanChoice == 1 | humanChoice == 2 | humanChoice == 3){
-        return choice[humanChoice-1];
-
-    }else {
-    	return choice[Math.floor(Math.random() * 3)]
-    }
+ 	let humanChoice = prompt("Write your choice: rock, paper or scissors");
+ 	humanChoice = humanChoice.toLowerCase();
+    return humanChoice;
 } 
 
-console.log(getHumanChoice());
 
+/*Playround has the logic of a single round. I stored the losing cases in variables for readability.
+The first if statement handles all the ties. And in all the other cases the user wins.
+*/
+function playRound(humanChoice,computerChoice) {
+
+    let lose1 = (humanChoice == "paper" && computerChoice == "scissors");    
+    let lose2 = (humanChoice == "scissors" && computerChoice == "rock");
+    let lose3 = (humanChoice == "rock" && computerChoice == "paper");
+    
+    if (humanChoice == computerChoice){
+    	console.log("It's a tie.");
+    } else if (lose1 | lose2 | lose3){  
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
+	}else {
+	    console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+	}
+}
+
+playRound(getHumanChoice(),getComputerChoice());
