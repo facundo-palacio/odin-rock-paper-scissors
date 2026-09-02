@@ -1,4 +1,8 @@
 
+let humanScore = 0;
+let computerScore = 0;
+
+
 /*
 This function uses (pseudo) random numbers transformed to integers 
 between 0 to 2 in order to get from the array the choice stored in 
