@@ -16,13 +16,23 @@ return choices[Math.floor(value)];
 }
 
 /*This function allows the user to choose between rock, paper and scissors
-and returns its choice. I made the decision of (pseudo) randomly choose
-one option for it if the input is invalid. And restricted its options to 
-numbers. This will be reviewed and reformatted later.*/
+and returns its choice if it's well written.*/
 
 function getHumanChoice() {
- 	let humanChoice = prompt("Write your choice: rock, paper or scissors");
- 	humanChoice = humanChoice.toLowerCase();
+    let wrongChoice = true;
+    let humanChoice;
+    while(wrongChoice){
+ 	    humanChoice = prompt("Write your choice: rock, paper or scissors");
+        if (humanChoice == null){
+        	continue;
+        }
+ 	    humanChoice = humanChoice.toLowerCase();
+ 	    if(humanChoice == "rock" || humanChoice == "paper" || humanChoice == "scissors"){
+ 	    	wrongChoice	= false;
+ 	    }else {
+ 	    	console.log("Try again. Write only rock, paper or scissors please");
+ 	    }
+    }
     return humanChoice;
 } 
 
@@ -42,7 +52,7 @@ function playGame(){
         if (humanChoice == computerChoice){
     	    console.log("It's a tie.");
     	    retval = "tie";
-        } else if (lose1 | lose2 | lose3){  
+        } else if (lose1 || lose2 || lose3){  
             console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
             retval = "computer_wins";
 	    }else {
@@ -67,7 +77,7 @@ function playGame(){
 
     if (computerScore > humanScore){
     	console.log("The computer won this game. :(");
-    }else if  (humanScore < humanScore) {
+    }else if  (humanScore < computerScore) {
         console.log("You won this game. Congratulations! :)");	
     }else {
     	console.log("No one won this time. But no one lost either. :|");
