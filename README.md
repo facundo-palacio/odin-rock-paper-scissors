@@ -1,2 +1,2 @@
 # odin-rock-paper-scissors
-Rock, Paper, Scissors game odin's project assignment
+Rock, Paper, Scissors game from odin's project assignment
